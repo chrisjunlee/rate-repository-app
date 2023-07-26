@@ -1,6 +1,7 @@
-import { View, StyleSheet, Text, Pressable} from 'react-native';
+import { View, StyleSheet, Text, Pressable, ScrollView} from 'react-native';
 import Constants from 'expo-constants';
 import appTheme from '../theme';
+import { Link } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,31 +12,44 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: appTheme.colors.primary,
     fontWeight: 700,
-    height: 70
+    height: 100
   },
+  scrollView: {
+    flexGrow: 1
+  },
+  appBarTab: {
+    display: 'flex',
+    flexDirection: 'row',
+    margin: 3,
+    justifyContent: 'space-evenly',
+    fontSize: appTheme.textProperties.headingSize,
+    boxShadow: '0px 0px 4px' + appTheme.colors.primaryLight,
+    margin: 4,
+    padding: 10
+  }
 });
 
-const onPressFunction = () => {}
+const AppBarTab = ({title, target}) => {
+  return (
+    <Pressable>
+      <Link to={target} >
+        <Text style={styles.appBarTab}>
+          {title}
+        </Text>
+      </Link>
+    </Pressable>
+  )
+}
 
 const AppBar = () => {
   return (
   <View style={styles.container}>
-    <Pressable onPress={onPressFunction}>
-      <Text>Repositories</Text>
-    </Pressable>
+    <ScrollView horizontal style={styles.scrollView}>
+      <AppBarTab title="Repositories" target="/" />
+      <AppBarTab title="Sign In" target="/signin" />
+      <AppBarTab title="Sign Up" target="/signup" />
+    </ScrollView>
   </View>
-  );
-};
-
-const AppBarTab = ({ title, target }) => {
-  return (
-    <TouchableWithoutFeedback>
-      <Link to={ target } component={ TouchableOpacity }>
-        <Heading contrast={ true } style={ appBarStyle.appBarTab }>
-          { title }
-        </Heading>
-      </Link>
-    </TouchableWithoutFeedback>
   );
 };
 

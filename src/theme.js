@@ -10,7 +10,7 @@ const appTheme = {
     defaultSize: 16,
     smallSize: 14,
     largeSize: 20,
-    headingSize: 22,
+    headingSize: 20,
     fontFamily: Platform.select({
       android: "Roboto",
       ios: "Arial",
