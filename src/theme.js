@@ -5,6 +5,7 @@ const appTheme = {
     main: "#202020",
     light: "#606060",
     contrast: "#f0f0f0",
+    secondary: "#606060",
   },
   textProperties: {
     defaultSize: 16,
@@ -18,6 +19,9 @@ const appTheme = {
     }),
     fontWeight: "400",
     boldWeight: "700",
+  },
+  fontSizes: {
+    body: 1
   },
   colors: {
     primary: "#2e93ff",
